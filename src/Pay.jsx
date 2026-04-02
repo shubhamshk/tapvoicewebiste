@@ -112,9 +112,10 @@ export default function Pay() {
                     try {
                       const details = await actions.order.capture();
                       const transactionId = details.id;
-                      const payerEmail = details.payer.email_address || email;
-                      
-                      await saveToSupabase(payerEmail, transactionId);
+                      // Always use the email the user typed in the form.
+                      // details.payer.email_address returns PayPal's internal
+                      // sandbox/dummy email — never use it as the license key.
+                      await saveToSupabase(email, transactionId);
                       navigate('/success');
                     } catch (err) {
                       console.error("Payment Capture Error", err);
