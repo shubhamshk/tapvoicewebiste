@@ -127,15 +127,21 @@ section {
 
 /* Header */
 header {
-  padding: 24px 0;
+  padding: 12px 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid var(--border-color);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 99px;
   position: sticky;
-  top: 0;
+  top: 24px;
+  max-width: 800px;
+  margin: 0 auto 40px auto;
   z-index: 100;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .logo {
@@ -215,7 +221,7 @@ header {
 
 /* Hero Section */
 .hero {
-  padding: 100px 0 40px;
+  padding: 40px 0 40px;
   text-align: center;
   position: relative;
 }
@@ -819,4 +825,41 @@ footer {
   color: var(--text-muted);
   font-size: 0.85rem;
   opacity: 0.6;
+}
+
+/* Custom Logo */
+.logo-img {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* Homepage Hero Image with Shake Animation and Blending */
+.hero-image-wrapper {
+  margin: 0 auto 16px auto;
+  max-width: 500px;
+  animation: shakeOnLoad 0.8s cubic-bezier(.36,.07,.19,.97) both;
+  /* Adding a nice blur/glow to blend it warmly into the dark bg */
+  filter: drop-shadow(0 0 30px rgba(0, 240, 255, 0.2)) drop-shadow(0 0 10px rgba(255, 0, 85, 0.2));
+  mix-blend-mode: screen; /* Helps dark backgrounds of the image fade into the page bg if suitable, otherwise normal is fine */
+}
+
+@keyframes shakeOnLoad {
+  10%, 90% { transform: translate3d(-1px, 0, 0); }
+  20%, 80% { transform: translate3d(2px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+  40%, 60% { transform: translate3d(4px, 0, 0); }
+}
+
+.hero-image-wrapper img {
+  width: 100%;
+  height: auto;
+  border-radius: 20px; /* soft rounded corners */
+}
+
+/* Re-trigger class for onClick */
+.shake-active {
+  animation: none !important; /* Forces reflow trick or just overrides to ensure it plays again if toggled */
+  animation: shakeOnLoad 0.8s cubic-bezier(.36,.07,.19,.97) both !important;
 }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
-import { Headphones, ShieldCheck, Zap, MonitorSmartphone, CheckCircle2 } from 'lucide-react';
+import { ShieldCheck, Zap, MonitorSmartphone, CheckCircle2 } from 'lucide-react';
 import { supabase } from './supabaseClient'; // Ensure this points to the right client
 import './index.css';
 
@@ -52,7 +52,7 @@ export default function Pay() {
           {/* Top Section */}
           <div className="pay-header">
             <div className="logo iosevka-charon-bold" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', fontSize: '1.25rem', marginBottom: '4px' }}>
-              <Headphones size={24} color="var(--accent)" />
+              <img src="https://res.cloudinary.com/dfbi73kpa/image/upload/v1775128854/app_logo_wq0zey.jpg" alt="VoiceMyBot Logo" className="logo-img" />
               VoiceMyBot
             </div>
             <h2 className="iosevka-charon-bold" style={{ fontSize: '1.1rem', color: 'var(--text-muted)' }}>

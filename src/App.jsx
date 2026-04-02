@@ -8,6 +8,36 @@ import './index.css';
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
   const [sparks, setSparks] = useState([]);
+  const logoRef = React.useRef(null);
+
+  const handleLogoClick = (e) => {
+    e.stopPropagation();
+    
+    // Play sound
+    const sounds = ['/audio/00.mp3', '/audio/00_Ow.mp3', '/audio/06.mp3', '/audio/12.mp3', '/audio/29.mp3'];
+    const randomSound = sounds[Math.floor(Math.random() * sounds.length)];
+    const audio = new Audio(randomSound);
+    audio.volume = 0.5;
+    audio.play();
+
+    // Trigger flawless Web Animations API shake
+    if (logoRef.current) {
+      logoRef.current.animate([
+        { transform: 'translate3d(-1px, 0, 0)', offset: 0.1 },
+        { transform: 'translate3d(2px, 0, 0)', offset: 0.2 },
+        { transform: 'translate3d(-4px, 0, 0)', offset: 0.3 },
+        { transform: 'translate3d(4px, 0, 0)', offset: 0.4 },
+        { transform: 'translate3d(-4px, 0, 0)', offset: 0.5 },
+        { transform: 'translate3d(4px, 0, 0)', offset: 0.6 },
+        { transform: 'translate3d(-4px, 0, 0)', offset: 0.7 },
+        { transform: 'translate3d(2px, 0, 0)', offset: 0.8 },
+        { transform: 'translate3d(-1px, 0, 0)', offset: 0.9 }
+      ], {
+        duration: 800,
+        easing: 'cubic-bezier(.36,.07,.19,.97)'
+      });
+    }
+  };
 
   // Handles the global click "sparkle" animation
   useEffect(() => {
@@ -78,7 +108,7 @@ function App() {
             style={{ cursor: 'pointer' }} 
             onClick={() => setCurrentPage('home')}
           >
-            <Headphones size={24} color="var(--accent)" />
+            <img src="https://res.cloudinary.com/dfbi73kpa/image/upload/v1775128854/app_logo_wq0zey.jpg" alt="VoiceMyBot Logo" className="logo-img" />
             VoiceMyBot
           </div>
           <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
@@ -114,6 +144,14 @@ function App() {
           <main>
             {/* 1. HERO SECTION */}
             <section className="hero">
+              <div 
+                ref={logoRef}
+                className="hero-image-wrapper"
+                onClick={handleLogoClick}
+                style={{ cursor: 'pointer' }}
+              >
+                <img src="https://res.cloudinary.com/dfbi73kpa/image/upload/v1775129453/logo_homp2_xsjcca.png" alt="VoiceMyBot in action" />
+              </div>
               <h1 className="iosevka-charon-bold">Make Your Laptop Come Alive 🎧</h1>
               <p className="iosevka-charon-regular">Add fun voice reactions to every single tap. Works natively on Windows & Mac.</p>
               
@@ -341,7 +379,7 @@ function App() {
         <footer>
           <div className="footer-content">
             <div className="logo iosevka-charon-bold" style={{ fontSize: '1rem' }}>
-              <Headphones size={18} color="var(--accent)" />
+              <img src="https://res.cloudinary.com/dfbi73kpa/image/upload/v1775128854/app_logo_wq0zey.jpg" alt="VoiceMyBot Logo" className="logo-img" style={{ width: '20px', height: '20px' }} />
               VoiceMyBot
             </div>
             
