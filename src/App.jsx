@@ -128,9 +128,11 @@ function App() {
               Rewards
             </button>
             <a 
-              href="https://github.com/shubhamshk/VoicemyBot_exe/releases/download/v1.0.0/WinMoan.Setup.1.0.0.exe"
+              href="https://gofile.io/d/FvWyB5"
               className="btn btn-primary iosevka-charon-medium"
               style={{ textDecoration: 'none' }}
+              target="_blank"
+              rel="noopener noreferrer"
             >
               Download
             </a>
@@ -154,7 +156,7 @@ function App() {
               <p className="iosevka-charon-regular">Add fun voice reactions to every single tap. Works natively on Windows & Mac.</p>
               
               <div className="btn-group" id="download">
-                <a href="https://github.com/shubhamshk/VoicemyBot_exe/releases/download/v1.0.0/WinMoan.Setup.1.0.0.exe" className="btn btn-primary iosevka-charon-bold">
+                <a href="https://gofile.io/d/FvWyB5" className="btn btn-primary iosevka-charon-bold" target="_blank" rel="noopener noreferrer">
                   <Download size={18} />
                   Download Now
                 </a>
